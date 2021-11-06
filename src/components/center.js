@@ -21,12 +21,14 @@ export default class Center extends Component {
     this.setState({ showList: !showList });
   };
   handleIncrement = () => {
-    const { count } = this.state;
+    let { count } = this.state;
     this.setState({ count: ++count });
   };
+
   render() {
+    console.log(this.props)
     return (
-      <div>
+      <div style={{backgroundColor:this.props.them}}>
         <button onClick={this.handleChangeListCondition}> toggle list </button>
         {this.state.showList && (
           <ul>
