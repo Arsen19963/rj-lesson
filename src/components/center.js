@@ -26,7 +26,6 @@ export default class Center extends Component {
   };
 
   render() {
-    console.log(this.props)
     return (
       <div style={{backgroundColor:this.props.them}}>
         <button onClick={this.handleChangeListCondition}> toggle list </button>
@@ -41,7 +40,7 @@ export default class Center extends Component {
         <button onClick={this.handleIncrement}>increment</button>
         <button>decrement</button>
         <button>rest</button>
-        {/* if value === -  */}
+ 
         <button> toggle value </button>
 
       </div>
