@@ -40,3 +40,17 @@
   flex-direction: column;
   justify-content: center;
 }
+.beers-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-container{
+  width: 300px;
+  border: 1px solid #333333;
+  margin: 1%;
+}
+.card-img{
+  height: 250px;
+}

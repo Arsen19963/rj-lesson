@@ -8,6 +8,14 @@ export default class Main extends Component {
     taskList: [],
     showAddModal: false,
   };
+  componentDidMount() {
+    fetch("https://api.punkapi.com/v2/beers", {
+      method: "GET"
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+  }
+  
   handleShowModal = () => {
     this.setState({ showAddModal: !this.state.showAddModal });
   };
