@@ -12,40 +12,38 @@ const getBeers = () => {
   });
 };
 const getUsers = () => {
-    return fetch("https://reqres.in/api/users", {
-        method: "POST",
-        body: JSON.stringify({name: "paul rudd",   movies: ["I Love You Man", "Role Models"]})
-    })
-    .then(res => res.json())
-}
+  return fetch("https://reqres.in/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      name: "paul rudd",
+      movies: ["I Love You Man", "Role Models"],
+    }),
+  }).then((res) => res.json());
+};
 
 export default class Main extends Component {
   componentDidMount() {
-  setTimeout(() => {
-    getBeers().then((res) => this.setState({ beers: res }));
-  }, 5000);
-  getUsers()
-  .then(res => console.log(res))
+    setTimeout(() => {
+      getBeers().then((res) => this.setState({ beers: res }));
+    }, 5000);
+    getUsers().then((res) => console.log(res));
   }
   state = {
     beers: null,
     activeTab: 0,
   };
-  handelChangeTab= (index) => () => {
-    this.setState({activeTab: index})
-  }
+  handelChangeTab = (index) => () => {
+    this.setState({ activeTab: index });
+  };
   render() {
     const { beers, activeTab } = this.state;
     return (
       <>
-      <span onClick={this.handelChangeTab(0)}>astro</span>
-      <span  onClick={this.handelChangeTab(1)}>beers</span>
-    {!beers &&  <Loader
-        type="TailSpin"
-        color="#00BFFF"
-        height={300}
-        width={300}
-       />}
+        <span onClick={this.handelChangeTab(0)}>astro</span>
+        <span onClick={this.handelChangeTab(1)}>beers</span>
+        {!beers && (
+          <Loader type="TailSpin" color="#00BFFF" height={300} width={300} />
+        )}
         {activeTab === 1 ? (
           <Astro />
         ) : (
