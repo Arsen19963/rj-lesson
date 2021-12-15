@@ -3,6 +3,7 @@ import Register from "./components/register";
 import Login from "./components/login";
 import { addTask, getAllTasks } from "./service";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 export default class Main extends Component {
   state = {
     description: "",
@@ -12,8 +13,9 @@ export default class Main extends Component {
     getAllTasks().then((res) => this.setState({ tasks: res.data.data }));
   };
   handleAddTask = () => {
-    addTask({ description: this.state.description }).then((res) =>
-      this.handleGetTasks()
+    addTask({ description: this.state.description }).
+    then((res) =>
+      this.handleGetTasks(res)
     );
   };
   componentDidMount() {
@@ -22,10 +24,11 @@ export default class Main extends Component {
 
   render() {
     return (
+      
       <BrowserRouter>
-        <div
+        <div 
           style={{ display: "flex", flexDirection: "column", maxWidth: 200 }}
-        >
+          >
           <header>
             <ul>
               <Link to="/">
@@ -34,7 +37,7 @@ export default class Main extends Component {
               <Link to="/register">
               <li>register</li>
               </Link>
-              <Link to="/task">
+              <Link to="/register">
               <li>task</li>
               </Link>
             </ul>
@@ -52,14 +55,15 @@ export default class Main extends Component {
             onChange={(e) => {
               this.setState({ description: e.target.value });
             }}
-          />
-          <button onClick={this.handleAddTask}>add task</button>
+            />
+          <button onClick={this.handleAddTask}>Add Task</button>
           {this.state.tasks &&
             this.state.tasks.map((elem) => {
               return <div>{elem.description}</div>;
             })}
         </div>
-      </BrowserRouter>
+            </BrowserRouter>
+          
     );
   }
 }
